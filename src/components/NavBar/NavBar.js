@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import icon from '../../images/icon.png';
 import useStyles from './styles.js';
 import { useDispatch } from 'react-redux';
+import decode from 'jwt-decode';
 
 const NavBar = () => {
   const classes = useStyles();
@@ -13,18 +14,21 @@ const NavBar = () => {
 
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
   
-  useEffect(() => {
-    const token= user?.token;
-
-    setUser(JSON.parse(localStorage.getItem('profile')));
-  }, [location]);
-
   const logout = () => {
     dispatch({ type: 'LOGOUT'});
     setUser(null);
     navigate('/');
   };
 
+  useEffect(() => {
+    const token = user?.token;
+    if (token) {
+      const decodedToken = decode(token);
+      if (decodedToken.exp * 1000 < new Date().getTime()) logout();
+    }
+    setUser(JSON.parse(localStorage.getItem('profile')));
+  }, [location]);
+  
   return (
       <AppBar className={classes.appBar} position="static" color="inherit">
         <div className={classes.brandContainer}>
@@ -36,7 +40,7 @@ const NavBar = () => {
           {
             user? (
               <div className={classes.profile}>
-                <Avatar className={classes.purple} alt={user.result.name} src={user.result.imageUrl}>{user.result.family_name.charAt(0)}</Avatar>
+                <Avatar className={classes.purple} alt={user.result.name} src={user.result.picture}>{user.result.name.charAt(0)}</Avatar>
                 <Typography className={classes.userName} variant="h6">{user.result.name}</Typography>
                 <Button variant="contained" className={classes.logout} color="secondary" onClick={logout}>Logout</Button>
               </div>

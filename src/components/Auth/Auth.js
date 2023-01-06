@@ -1,14 +1,16 @@
 import React, { useState } from 'react'
-import { Avatar, Button, Paper, Grid, Typography, Container, TextField } from '@material-ui/core';
+import { Avatar, Button, Paper, Grid, Typography, Container } from '@material-ui/core';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import useStyles from './styles';
 import Input from './input';
 import { useDispatch } from 'react-redux';
 
-import { GoogleLogin, googleLogout } from '@react-oauth/google';
+import { GoogleLogin } from '@react-oauth/google';
 import jwt_decode from 'jwt-decode'
 import { useNavigate } from 'react-router-dom';
+import { signin, signup } from '../../actions/auth'
 
+const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: ''};
 
 function Auth() {
   const classes = useStyles();
@@ -18,18 +20,24 @@ function Auth() {
   const [showPassword, setShowPassword] = useState(false);
   const handleShowPassword = () => setShowPassword(!showPassword);
 
-  const [isSignUp, setIsSignUp] = useState(true);
+  const [isSignUp, setIsSignUp] = useState(false);
   const switchMode = () => {
    // setForm(initialState);
     setIsSignUp((prevIsSignup) => !prevIsSignup);
     setShowPassword(false);
   };
 
-  const handleSubmit = () => {
-
+  const [formData, setFormData] = useState(initialState);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if(isSignUp) {
+      dispatch(signup(formData, navigate));
+    } else {
+      dispatch(signin(formData, navigate));
+    }
   };
-  const handleChange = () => {
-
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   return (
