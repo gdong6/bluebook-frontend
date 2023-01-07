@@ -31,11 +31,9 @@ const NavBar = () => {
   
   return (
       <AppBar className={classes.appBar} position="static" color="inherit">
-        <div className={classes.brandContainer}>
-          <Link to="/"></Link>
-          <Typography className={classes.heading} variant="h3" align="center">BlueBook</Typography>
+        <Link to="/" className={classes.brandContainer}>
           <img className={classes.image} src={icon} alt="icon" height="50" />
-        </div>
+        </Link>
         <Toolbar className='classes.toolbar'>
           {
             user? (
