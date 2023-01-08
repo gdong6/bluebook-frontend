@@ -11,9 +11,10 @@ export default makeStyles((theme) => ({
     alignItems: 'center',
     padding: '10px 50px',
     /* Frosted Glass Effect */
-    backgroundColor: 'rgba(255,255,255, 0.5)',
-    boxShadow: 'inset 0px 0px 0px rgba(255, 255, 255, .5)',
+    backgroundColor: 'white',
+    boxShadow: 'inset 0px 0px 0px rgba(255, 255, 255, 1)',
     backdropFilter: 'blur(5px)',
+    //position: 'fixed',
   },
   heading: {
     color: 'rgba(0,183,255, 1)',
