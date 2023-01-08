@@ -1,4 +1,4 @@
-import { FETCH_ALL, FETCH_BY_SEARCH, CREATE, UPDATE, DELETE, LIKE, START_LOADING, END_LOADING } from '../constants/actionTypes';
+import { FETCH_ALL, FETCH_POST, FETCH_BY_SEARCH, CREATE, UPDATE, DELETE, LIKE, START_LOADING, END_LOADING } from '../constants/actionTypes';
 
 const actions = (state = { isLoading: true, posts: [] }, action) => {
     switch (action.type) {
@@ -13,8 +13,12 @@ const actions = (state = { isLoading: true, posts: [] }, action) => {
                 currentPage: action.payload.currentPage,
                 numberOfPages: action.payload.numberOfPages,
             }
+
+        case FETCH_POST:
+            return { ...state, post: action.payload };
+
         case FETCH_BY_SEARCH:
-            return { ...state, posts: action.payload.data };
+            return { ...state, posts: action.payload.data }; //check here
 
         case CREATE:
             return { ...state, posts: [...state.posts, action.payload] };

@@ -3,9 +3,9 @@ import { makeStyles } from '@material-ui/core/styles';
 export default makeStyles({
   media: {
     height: 0,
-    paddingTop: '61.8%',
-    backgroundColor: 'rgba(0, 0, 0, 0)',
-    backgroundBlendMode: 'darken',
+    paddingTop: '56.25%',
+    backgroundColor: 'while',
+    //backgroundBlendMode: 'darken',
   },
   border: {
     border: 'solid',
@@ -20,7 +20,6 @@ export default makeStyles({
     borderRadius: '15px',
     height: '100%',
     position: 'relative',
-    
     //Frosted Glass Effect
     boxShadow: 'inset 0px 0px 2000px rgba(255, 255, 255, .5)',
     backdropFilter: 'blur(5px)',
@@ -54,5 +53,9 @@ export default makeStyles({
     padding: '0 16px 8px 16px',
     display: 'flex',
     justifyContent: 'space-between',
+  },
+  cardAction: {
+    display: 'block',
+    textAlign: 'initial',
   },
 });
