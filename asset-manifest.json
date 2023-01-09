@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/bluebook/static/css/main.e720fb73.css",
+    "main.js": "/bluebook/static/js/main.35c88c87.js",
+    "static/media/icon.png": "/bluebook/static/media/icon.e7d24a89b76929a9e310.png",
+    "index.html": "/bluebook/index.html",
+    "main.e720fb73.css.map": "/bluebook/static/css/main.e720fb73.css.map",
+    "main.35c88c87.js.map": "/bluebook/static/js/main.35c88c87.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e720fb73.css",
+    "static/js/main.35c88c87.js"
+  ]
+}
