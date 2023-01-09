@@ -2,6 +2,6 @@
 
 The backend store in bluebook repository 
 
-## Please visit 
+## Please visit https://gdong6.github.io/bluebook-frontend/ to see this website
 
 
